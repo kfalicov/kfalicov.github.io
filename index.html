@@ -52,23 +52,30 @@
         </div>
         <script>
             $(".zoom").click(function(e){
-                $('.selected').removeClass('selected');
-                $(this).addClass("selected");
-                if($('.description').is(':visible')){
-                    var dest = moveDesc();
-                    var current = $('.gallery').children().index($('.description'))-1;
-                    var $desc = $('.description');
-                    $desc.show();
-                    if(current!==dest+1){
-                        $desc.animate({height: 'toggle'}, 300, ()=>{
-                            $desc.insertAfter($(".zoom").eq(dest)).animate({height: 'toggle'}, 300);
-                        });
+                var $desc = $('.description');
+                if($(this).hasClass('selected')){
+                    console.log("clicked the selected");
+                    $desc.animate({height: 'toggle'}, 300);
+                    $('.selected').removeClass('selected');
+                }else{
+                    $('.selected').removeClass('selected');
+                    $(this).addClass("selected");
+                    if($('.description').is(':visible')){
+                        var dest = moveDesc();
+                        var current = $('.gallery').children().index($('.description'))-1;
+                        $desc.show();
+                        if(current!==dest+1){
+                            $desc.animate({height: 'toggle'}, 300, ()=>{
+                                $desc.insertAfter($(".zoom").eq(dest)).animate({height: 'toggle'}, 300);
+                            });
+                        }
+                    }
+                    else{
+                        var dest = moveDesc(this);
+                        $(".description").insertAfter($(".zoom").eq(dest)).animate({height: 'toggle'}, 300);
                     }
                 }
-                else{
-                    var dest = moveDesc(this);
-                    $(".description").insertAfter($(".zoom").eq(dest)).animate({height: 'toggle'}, 300);
-                }
+                
                 
             });
             function moveDesc(){
