@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+    <title>kyle's projects</title>
+    <link rel="stylesheet" href="reset.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400i|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css" media="all">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/dropdown.js"></script>
+</head>
+<body>
+    <div id="vignette"></div>
+    <!-- begin header -->
+    <div class="header">
+        <div class="logo">
+            <h1>
+                <a href="index.html" title="Home">kyle's projects</a> 
+            </h1>
+        </div>
+        <div class="nav">
+            <div class="menudiv">
+                <ul class="menubuttons">
+                    <li><a href="index.html">Home</a></li>
+                    <!-- <li><a href="about.html">About</a></li> -->
+                </ul>
+            </div>
+            <div class="menutoggle"><span class="menutxt">☰ Menu</span><span class="menutxt hidden">✕ Menu</span></div>
+        </div>
+        <script>
+        $('.hidden').removeClass('hidden').hide();
+        $(".menutoggle").click(function(e){
+            $('.menudiv').animate({width: 'toggle'});
+            var text = $('.menutoggle').text();
+            $('.menutxt').toggle();
+        });
+        </script>
+        <div class="clear"></div>
+    </div>
+    <!-- end header -->
+    <div class="gallery">
+        <div class="zoom">Lair</div>
+        <div class="zoom">Coming Soon</div>
+    </div>
+    
+</body>
+</html>
