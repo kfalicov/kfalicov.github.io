@@ -43,7 +43,6 @@ div{
 }
 .logo h1 a{
     color: inherit;
-    font-weight:100;
     text-decoration: none;
     background-color: transparent;
 }
@@ -110,12 +109,13 @@ div{
 }
 .zoom{
     position: relative;
-    background-color: white;
+    background-color: rgb(83, 83, 83);
+    box-sizing: border-box;
     margin: 8px;
     width: 240;
     height:160;
     transition: transform .2s;
-    padding: 15px;
+    text-align: center;
 }
 .zoom::before{
     content: "";
@@ -131,3 +131,76 @@ div{
 .zoom:hover{
     transform: scale(1.09);
 }
+
+.outline1 {
+    position: relative;
+  }
+  
+  .outline2 {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color:white;
+    font-size: 24px;
+    font-family: 'Nexa', Nexa, sans-serif;
+  }
+  
+  .outline1:before,
+  .outline1:after,
+  .outline2:before,
+  .outline2:after {
+    content: "";
+    position: absolute;
+    background: white;
+  }
+  
+  .outline1:before {
+    width: 1px;
+    height: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .outline1:after {
+    height: 1px;
+    width: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  .outline2:before {
+    width: 1px;
+    height: 0;
+    top: 0;
+    right: 0;
+  }
+  
+  .outline2:after {
+    height: 1px;
+    width: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .outline1:hover:before {
+    height: 100%;
+    transition: all .12s linear .32s;
+  }
+  
+  .outline1:hover:after {
+    width: 100%;
+    transition: all .1s linear;
+  }
+  
+  .outline1:hover .outline2:before {
+    height: 100%;
+    transition: all .12s linear .1s;
+  }
+  
+  .outline1:hover .outline2:after {
+    width: 100%;
+    transition: all .1s linear .22s;
+  }
