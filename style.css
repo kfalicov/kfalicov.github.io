@@ -104,23 +104,25 @@ div{
 }
 .gallery{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
+    position: relative;
 }
 .zoom{
     position: relative;
     background-color: rgb(83, 83, 83);
-    box-sizing: border-box;
     margin: 8px;
     width: 240;
     height:160;
-    transition: transform .2s;
+    transition: all .2s;
     text-align: center;
 }
 .zoom::before{
     content: "";
     position: absolute;
-    top:0;
+    top:0px;
     bottom:0;
     left:0;
     right:0;
@@ -130,6 +132,12 @@ div{
 }
 .zoom:hover{
     transform: scale(1.09);
+}
+.selected{
+    top:8px;
+}
+.selected .outline2:after{
+    width:100%;
 }
 
 .outline1 {
@@ -203,4 +211,19 @@ div{
   .outline1:hover .outline2:after {
     width: 100%;
     transition: all .1s linear .22s;
+  }
+
+  .description{
+      width:100%;
+      height:400px;
+      background:#101010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color:white;
+    font-size: 24px;
+    font-family: 'Nexa', Nexa, sans-serif;
+    box-shadow: inset  0  40px 40px -40px #000000, 
+                inset  0 -40px 40px -40px #000000;
   }

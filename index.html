@@ -39,15 +39,69 @@
     <div class="gallery">
         <div class="zoom" >
             <div class="outline1"><div class="outline2">
-                <a href="Lair">
-                <img src="images/lair.png"></a>
+                <a href="#"><img src="images/lair.png"></a>
             </div></div>
         </div>
+        <div class="description">
+            Test of description
+        </div><script>$(".description").hide();</script>
         <div class="zoom" >
-                <div class="outline1"><div class="outline2">
-                    <div class="textcontent">Coming Soon</div>
-                </div></div>
-            </div>
+            <div class="outline1"><div class="outline2">
+                <div class="textcontent">Coming Soon</div>
+            </div></div>
+        </div>
+        <script>
+            $(".zoom").click(function(e){
+                $('.selected').removeClass('selected');
+                $(this).addClass("selected");
+                if($('.description').is(':visible')){
+                    var dest = moveDesc();
+                    var current = $('.gallery').children().index($('.description'))-1;
+                    var $desc = $('.description');
+                    $desc.show();
+                    if(current!==dest+1){
+                        $desc.animate({height: 'toggle'}, 300, ()=>{
+                            $desc.insertAfter($(".zoom").eq(dest)).animate({height: 'toggle'}, 300);
+                        });
+                    }
+                }
+                else{
+                    var dest = moveDesc(this);
+                    $(".description").insertAfter($(".zoom").eq(dest)).animate({height: 'toggle'}, 300);
+                }
+                
+            });
+            function moveDesc(){
+                var $desc = $('.description');
+                var itemsPerRow = 0;
+                $desc.hide();
+                var firstItem = $('.zoom').eq(0);
+                var itemTop = firstItem.position().top;
+                $('.zoom').each(function(i) { // loop till we hit next row
+                    itemsPerRow = i;
+                    if(($(this).position().top - itemTop) > 100) {
+                        return false;
+                    }else{
+                        itemsPerRow++;
+                    }
+                });
+                var selectedIndex = $(".zoom").index($(".selected"));
+                var selectedRowNum = Math.floor(selectedIndex / itemsPerRow) + 1;
+                let index = Math.min((selectedRowNum * itemsPerRow)-1, $(".zoom").length-1);
+                return index;
+            }
+            $(window).resize(function() {
+
+                if($('.description').is(':visible')){
+                    $(".description").hide(); // hide Bio so it doesn't interfere with the flex layout during resize
+                    clearTimeout(window.resizedFinished);
+                
+                    window.resizedFinished = setTimeout(function(){
+                        $(".description").insertAfter($(".zoom").eq(moveDesc())).show(); // show Bio again now that resize has stabilised
+                    }, 250);
+                }
+            });
+        </script>
     </div>
     
 </body>
