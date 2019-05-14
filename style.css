@@ -1,6 +1,5 @@
 body{
     background: none #444444;
-    /* background: url("images/wood.jpg"); */
     background-repeat: repeat;
     background-size: 500px 500px;
     line-height: 170%;
@@ -14,6 +13,7 @@ body{
 div{
     display: block;
 }
+
 .clear{
     clear: left;
 }
@@ -91,7 +91,7 @@ div{
 }
 .menubuttons li:hover{
     background-color: white;
-    color: #443333;
+    color: #333333;
 }
 .menutoggle{
     position: relative;
@@ -100,7 +100,7 @@ div{
 }
 .menutoggle:hover{
     background-color: white;
-    color: #443333;
+    color: #333333;
 }
 .gallery{
     display: flex;
@@ -218,8 +218,6 @@ div{
       height:400px;
       background:#101010;
     display: flex;
-    align-items: center;
-    justify-content: center;
     
     color:white;
     font-size: 24px;
@@ -227,4 +225,97 @@ div{
     box-shadow: inset  0  40px 40px -40px #000000, 
                 inset  0 -40px 40px -40px #000000;
     overflow:hidden;
+  }
+  
+
+  .content{
+      box-sizing: border-box;
+      width: auto;
+      position:relative;
+      display: flex;
+      width: 100%;
+      flex-flow: column wrap;
+      padding: 20px 20px;
+      height:400px;
+      vertical-align: top;
+      align-content: center;  /* NEW */
+      flex: 1 1 auto;
+  }
+  .content iframe{
+      -o-object-fit: contain;
+      object-fit: contain;
+      align-self: end;
+      
+      display: block;
+  }
+  .summary{
+      padding: 0px 15px;
+      max-width:460px;
+      font-size:16px;
+      font-family: 'Roboto', sans-serif;
+      word-wrap: break-word;
+      overflow: auto;
+      
+      display: block;
+  }
+  .summary a:link{
+    color: #ffffff;
+  }
+  .summary a:visited{
+    color: #444444;
+  }
+  .summary a:hover{
+    color: #bbbbbb;
+  }
+  .summary b{
+      font-weight: 17px;
+      text-decoration: underline;
+  }
+
+  .summary b.link{
+    padding: 2px 4px 2px 4px;
+    width: auto;
+    text-decoration: none;
+    background-color: #888888;
+    color: #000000;
+  }
+
+    .summary ul{
+        margin-left:18px;
+        list-style-type: square;
+    }
+    .summary ul li{
+        line-height: 100%;
+        padding-bottom: 5px;
+    }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000; 
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    background-clip: content-box;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #333333; 
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+
+    background-clip: content-box;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff; 
+    
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    background-clip: content-box;
   }

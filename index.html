@@ -37,24 +37,74 @@
     </div>
     <!-- end header -->
     <div class="gallery">
-        <div class="zoom" >
+        <div class="zoom" id="Lair">
             <div class="outline1"><div class="outline2">
                 <a href="#"><img src="images/lair.png"></a>
             </div></div>
         </div>
         <div class="description">
-            Test of description
+
+            <div class="Lair content">Lair
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/47xbVvnAKkI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="summary">
+                    <b class="link">Click <a href="Lair">here</a> to play! <br/></b>
+                    <b>Overview</b><br/>
+                    As a villain, take control of an evil lair! Thwart invading heroes without running out of money!
+                    <br/><b>Features</b><br/>
+                    <ul><li>Arcade-style simplicity</li>
+                    <li>Challenging game of patience and reaction time</li>
+                    <li>All original graphics</li></ul>
+                    <b>Gameplay</b><br/>
+                    You are randomly given lasers and mirrors to place in a room. 
+                    With these, you can set up a complex grid of lasers to trap 
+                    the heroes onto color-coded targets. The player is given a budget 
+                    and every item has a cost. Make sure to make good use of the available abilities!
+                    <br/><b>Technical challenges</b><br/>
+                    I had a lot of interesting challenges relating both to the library I was using (Phaser) 
+                    and to the ambition I put into the project. Here are a few: <br/>
+                    <ul><li>Adding mouse wheel input to Phaser</li>
+                    <li>Learning JavaScript and ES6</li>
+                    <li>In order to be able to store lasers and mirrors with the ability to redirect, but also be deleted, 
+                        I had to come up with some sort of linked data structure</li>
+                    <li>Writing an entire dialog system that was never used</li>
+                    <li>Figuring out how to create and load shaders in Phaser</li>
+                    <li>Creating normal maps along with textures so that lighting would look nice</li>
+                    <li>Hue interpolation vs. RGB interpolation</li>
+                    <li>Raycasting for nice looking shadows</li>
+                    <li>Figuring out particle systems (Phaser doesn't natively support particles with frame animations)</li>
+                    <li>Many physics bugs</li>
+                    <li>Creating sprite animations with atlases</li>
+                    <li>Regex (part of the unimplemented dialog system)</li>
+                    <li>HTML font loading and use in Phaser</li></ul>
+                    <b>Future plans</b><br/>
+                    <ul><li>Mobile support</li>
+                        <li>Tutorial</li>
+                        <li>Puzzle mode</li>
+                        <li>Hero AI and more complex behavior</li>
+                        <li>More lasers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="Soon content">More projects coming soon!</div>
+            
         </div><script>$(".description").hide();</script>
-        <div class="zoom" >
+        <div class="zoom" id="Soon">
             <div class="outline1"><div class="outline2">
                 <div class="textcontent">Coming Soon</div>
             </div></div>
         </div>
         <script>
             $(".zoom").click(function(e){
+                //this is where the description's contents are changed based on the clicked button
+                let name = '.'+$(this).attr('id');
+                $('.content').hide();
+                $('.description').children(name).show();
+                //end description change
+
+                //this is what shows the description in the correct row
                 var $desc = $('.description');
                 if($(this).hasClass('selected')){
-                    console.log("clicked the selected");
                     $desc.animate({height: 'toggle'}, 300);
                     $('.selected').removeClass('selected');
                 }else{
@@ -78,6 +128,8 @@
                 
                 
             });
+            //returns the index of the last item in the row of the selected item
+            //this allows the description to be positioned after the row
             function moveDesc(){
                 var $desc = $('.description');
                 var itemsPerRow = 0;
@@ -86,6 +138,8 @@
                 var itemTop = firstItem.position().top;
                 $('.zoom').each(function(i) { // loop till we hit next row
                     itemsPerRow = i;
+                    //threshold of 100 is just so that the css transforms are
+                    //ignored when trying to determine items in a row
                     if(($(this).position().top - itemTop) > 100) {
                         return false;
                     }else{
@@ -97,6 +151,8 @@
                 let index = Math.min((selectedRowNum * itemsPerRow)-1, $(".zoom").length-1);
                 return index;
             }
+            //on window resize event, it recalculates the description position
+            //based on the new rows generated by wrapping
             $(window).resize(function() {
 
                 if($('.description').is(':visible')){
