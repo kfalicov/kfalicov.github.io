@@ -67,6 +67,7 @@ div{
     border-bottom: 1px solid white;
     box-shadow: 10px 10px 0 0 #00000081;
     overflow: hidden;
+    box-sizing: border-box;
 }
 .menudiv{
     display: none;
