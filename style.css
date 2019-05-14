@@ -93,6 +93,7 @@ div{
 .menubuttons li:hover{
     background-color: white;
     color: #333333;
+    cursor: pointer;
 }
 .menutoggle{
     position: relative;
