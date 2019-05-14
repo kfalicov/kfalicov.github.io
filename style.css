@@ -115,7 +115,7 @@ div{
 }
 .zoom{
     position: relative;
-    background-color: rgb(83, 83, 83);
+    background-color: #535353;
     margin: 8px;
     width: 240;
     height:160;
@@ -251,6 +251,70 @@ div{
       align-self: end;
       
       display: block;
+  }
+  .triangle{
+    position: absolute;
+    width: 200;
+    height:141;
+    left:0px;
+    bottom:0px;
+    box-sizing: border-box;
+  }
+  .triangle:before{
+    content:'';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: #fff71e;
+    transform-origin: 0 0;
+    transform: rotate(45deg);
+    box-shadow: 0px 40px 20px 40px #000000;
+  }
+  .triangle a{
+    box-sizing: border-box;
+    position: absolute;
+    top:0;
+    left:0;
+    padding: 15px 20px;
+    text-align: center;
+    line-height:1.1;
+    font-size: 16px;
+    width:100%;
+    height:100%;
+    text-decoration: none;
+    color: #000000;
+    transform-origin: 0 0;
+    transform: rotate(45deg);
+    transition: box-shadow
+  }
+  .triangle a:hover{
+    color: #ffffff;
+  }
+  .triangle a:hover:before{
+    height:100%;
+  }
+  .triangle a:hover p{
+    display: none;
+  }
+  .alt{
+    padding-top: 8px;
+    display: none;
+  }
+  .triangle a:hover .alt{
+    display: block;
+  }
+  .triangle a:before{
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 0px;
+    width:100%;
+    background-color: #535353;
+    transition: height .2s linear;
+    z-index: -1;
   }
   .summary{
       padding: 0px 15px;
