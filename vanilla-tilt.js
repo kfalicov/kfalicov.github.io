@@ -212,8 +212,6 @@ class VanillaTilt {
       y = (this.event.clientY - this.top) / this.height;
     }
 
-    console.log(x,y);
-
     let tiltX = (-this.reverse * (x * this.settings.max * 2)).toFixed(2);
     let tiltY = (this.reverse * (y * this.settings.max * 2)).toFixed(2);
     let angle = Math.atan2(this.event.clientX - (this.left + this.width / 2), -(this.event.clientY - (this.top + this.height / 2))) * (180 / Math.PI);
