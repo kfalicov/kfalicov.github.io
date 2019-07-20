@@ -1,3 +1,5 @@
+"use strict";
+
 const e = React.createElement;
 const domContainer = document.querySelector('#boxes_container');
 
@@ -7,11 +9,12 @@ projs.once('value').then(function(snapshot){
     snapshot.forEach(function(child){
         div = document.createElement('div');
         domContainer.appendChild(div);
-        ReactDOM.render(<div className='zoom'>
-            <div className='title'>{child.val().name}</div>
-            <div className='subtitle'>{child.val().desc}</div>
-            <a href={child.val().url}></a>
-        </div>, div);
+        ReactDOM.render(
+            React.createElement("div", {className: "zoom"}, 
+            React.createElement("div", {className: "title"}, child.val().name),
+            React.createElement("div", {className: "subtitle"}, child.val().desc), 
+            React.createElement("a", {href: child.val().url})),
+            div);
         
         VanillaTilt.init(div, {
             reverse:                true,
