@@ -147,6 +147,7 @@ div{
 }
 .zoom:hover{
   border: 1px solid black;
+  transform: scale3d(1.09,1.09,1.09);
 }
 .zoom a{
   position: absolute;
